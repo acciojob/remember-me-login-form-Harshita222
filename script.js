@@ -8,7 +8,7 @@ function eventDetails(events) {
 	const user = document.getElementById('username');
 	const pass = document.getElementById('password');
 	const  rememberMe = document.getElementById('checkbox').checked;
-
+   
  if (rememberMe == true) {
  	localStorage.setItem('username',user.value);
 	 localStorage.setItem('password',pass.value)
@@ -21,4 +21,20 @@ function eventDetails(events) {
 
 	alert(`Logged in as ${user.value}`);
 }
-	// alert(`Logged in as ${username}`)
+	
+window.onload = function() {
+    const savedUsername = localStorage.getItem('username');
+    const savedPassword = localStorage.getItem('password');
+
+    if (savedUsername !== null && savedPassword !== null) {
+        const existingButton = document.createElement('button');
+        existingButton.id = 'existing';
+        existingButton.innerText = 'Login as existing user';
+        existingButton.addEventListener('click', function() {
+            alert(`Logged in as ${savedUsername}`);
+        });
+
+        document.getElementById('form-group').appendChild(existingButton);
+    }
+};
+// alert(`Logged in as ${username}`)
