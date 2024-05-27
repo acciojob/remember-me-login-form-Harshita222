@@ -8,7 +8,9 @@ function eventDetails(events) {
 	const user = document.getElementById('username');
 	const pass = document.getElementById('password');
 	const  rememberMe = document.getElementById('checkbox').checked;
-   
+    const existingUserDiv = document.getElementById('existingUserDiv');
+    const existingUserButton = document.getElementById('existing');
+
  if (rememberMe == true) {
  	localStorage.setItem('username',user.value);
 	 localStorage.setItem('password',pass.value)
@@ -21,8 +23,7 @@ function eventDetails(events) {
 
 	alert(`Logged in as ${user.value}`);
 }
-	
-window.onload = function() {
+	window.onload = function() {
     const savedUsername = localStorage.getItem('username');
     const savedPassword = localStorage.getItem('password');
 
@@ -37,4 +38,8 @@ window.onload = function() {
         document.getElementById('form-group').appendChild(existingButton);
     }
 };
+ // existingUserButton.addEventListener('click', () => {
+ //        const username = localStorage.getItem('username');
+ //        alert(`Logged in as ${username}`);
+ //    });
 // alert(`Logged in as ${username}`)
